@@ -1,5 +1,5 @@
-# Docker template for PHP projects
-This repository provides a starting template for PHP application development.
+# NovaCMS (MVC scaffolding)
+This repository contains a PHP MVC scaffolding (no CMS logic implemented) suitable as a starting point for NovaCMS.
 
 It contains:
 * NGINX webserver
@@ -8,6 +8,19 @@ It contains:
 * PHPMyAdmin
 * Composer
 * Composer package [nikic/fast-route](https://github.com/nikic/FastRoute) for routing
+
+## Structure
+
+- `app/src/Controllers/` — controllers (e.g., `HomeController`, `HelloController`)
+- `app/src/Models/` — models (placeholder)
+- `app/src/Views/` — views
+  - `app/src/Views/layouts/` — layout templates (e.g., `main.php`)
+  - `app/src/Views/partials/` — partials (e.g., `header.php`, `footer.php`)
+  - `app/src/Views/home/`, `app/src/Views/hello/` — example view folders
+- `app/src/ViewModels/` — view models (placeholder)
+- `app/src/Enums/` — enums (placeholder)
+- `app/src/Core/` — core base classes (placeholder)
+- `app/public/` — web root and router entrypoint (`index.php`)
 
 ## Setup
 
@@ -25,7 +38,7 @@ docker compose up
 
 This template is configured to use Composer for PSR-4 autoloading:
 
-- Namespace `App\\` is mapped to `app/src/`.
+- Namespace `NovaCMS\\` is mapped to `app/src/`.
 
 To install dependencies and generate the autoloader, run:
 
@@ -39,7 +52,7 @@ If you add new classes or change namespaces, regenerate the autoloader:
 docker compose run --rm php composer dump-autoload
 ```
 
-Example usage is wired in `app/public/index.php` and a sample class exists at `app/src/hello.php`.
+Entry routing is configured in `app/public/index.php` using FastRoute. Example controllers are under `app/src/Controllers/`.
 
 ### NGINX
 
@@ -63,3 +76,16 @@ Or run:
 docker compose down
 ```
 
+## Project rename
+
+To rename the folder to `NovaCMS` locally (optional), run:
+
+```bash
+mv /Users/kiankhatibi/RiderProjects/web_development_1_boilerplate /Users/kiankhatibi/RiderProjects/NovaCMS
+```
+
+Then open the new folder in your IDE and re-run:
+
+```bash
+docker compose run --rm php composer dump-autoload
+```

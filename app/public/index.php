@@ -16,8 +16,8 @@ use function FastRoute\simpleDispatcher;
  * Define the routes for the application.
  */
 $dispatcher = simpleDispatcher(function (RouteCollector $r) {
-    $r->addRoute('GET', '/', ['App\Controllers\HomeController', 'home']);
-    $r->addRoute('GET', '/hello/{name}', ['App\Controllers\HelloController', 'greet']);
+    $r->addRoute('GET', '/', ['NovaCMS\\Controllers\\HomeController', 'home']);
+    $r->addRoute('GET', '/hello/{name}', ['NovaCMS\\Controllers\\HelloController', 'greet']);
 });
 
 

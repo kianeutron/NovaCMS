@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controllers;
+namespace NovaCMS\Controllers;
 
 class HelloController
 {
