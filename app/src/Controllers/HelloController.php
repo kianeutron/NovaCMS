@@ -2,13 +2,10 @@
 
 namespace NovaCMS\Controllers;
 
-class HelloController
+class HelloController extends BaseController
 {
-    public function greet($vars = [])
-    {
-        // normally we don't want to echo from a controller method directly
-        // but rather load a view template
-        $name = $vars['name'] ?? 'World';
-        echo "Hi, {$name}!";
+    public function index () {
+    $posts = Post::all();
+    $this -> view('home', ['posts' => $posts]);
     }
 }

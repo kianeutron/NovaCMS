@@ -8,12 +8,18 @@ services:
         volumes:
             - ./nginx.conf:/etc/nginx/nginx.conf
             - ./app:/app
+        networks:
+            - novacms-network
     php:
         build:
             context: .
             dockerfile: PHP.Dockerfile
         volumes:
             - ./app:/app
+        networks:
+            - novacms-network
+        depends_on:
+            - mysql
     mysql:
         image: mariadb:latest
         environment:
@@ -25,11 +31,21 @@ services:
             - mysqldata:/var/lib/mysql
         ports:
             - 3306:3306
+        networks:
+            - novacms-network
     phpmyadmin:
         image: phpmyadmin:latest
         ports:
             - 8080:80
         environment:
             - PMA_HOST=mysql
+        networks:
+            - novacms-network
+        depends_on:
+            - mysql
 volumes:
     mysqldata: {}
+
+networks:
+    novacms-network:
+        driver: bridge
