@@ -1,0 +1,65 @@
+/* Auth Pages (Login/Register) Styles */
+
+.auth-container {
+    max-width: 500px;
+    margin: 3rem auto;
+}
+
+.auth-container h1 {
+    margin-bottom: 1rem;
+}
+
+.auth-error {
+    background: #fee;
+    border: 1px solid #fcc;
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1rem 0;
+    color: #c00;
+}
+
+.auth-form {
+    margin-top: 2rem;
+}
+
+.auth-form-group {
+    margin-bottom: 1rem;
+}
+
+.auth-form-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.auth-form-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.auth-form-input:focus {
+    outline: none;
+    border-color: #6366f1;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.auth-form-submit {
+    width: 100%;
+}
+
+.auth-footer {
+    margin-top: 1rem;
+    text-align: center;
+    color: #666;
+}
+
+.auth-footer a {
+    color: #6366f1;
+    text-decoration: none;
+}
+
+.auth-footer a:hover {
+    text-decoration: underline;
+}

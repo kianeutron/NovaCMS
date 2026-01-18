@@ -1,0 +1,160 @@
+/* Posts Page Styles - Professional Design */
+
+/* Page Header */
+.posts-page-header {
+  margin: 2rem 0 3rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 3px solid #1f2937;
+}
+
+.posts-page-title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1f2937;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+/* Posts List Container */
+.posts-list-container {
+  display: grid;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+/* Individual Post Card */
+.posts-list-item {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 2rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.posts-list-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(31,41,55,0.1);
+  border-color: #1f2937;
+}
+
+.posts-list-item-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 1rem;
+}
+
+.posts-list-item-title a {
+  color: #1f2937;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.posts-list-item-title a:hover {
+  color: #374151;
+}
+
+.posts-list-item-excerpt {
+  color: #6b7280;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin: 1rem 0;
+}
+
+.posts-list-item-meta {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e5e7eb;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+.posts-list-item-meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.posts-list-item-meta svg {
+  flex-shrink: 0;
+}
+
+.posts-list-read-more {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 10px 20px;
+  background: #1f2937;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.posts-list-read-more:hover {
+  background: #374151;
+  transform: translateX(4px);
+}
+
+/* Pagination */
+.posts-pagination {
+  margin-top: 3rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.posts-pagination-btn {
+  padding: 12px 24px;
+  background: #1f2937;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.posts-pagination-btn:hover {
+  background: #374151;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(31,41,55,0.2);
+}
+
+.posts-pagination-btn:disabled,
+.posts-pagination-btn.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Empty State */
+.posts-empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #6b7280;
+  font-size: 1.1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .posts-page-title {
+    font-size: 2rem;
+  }
+  
+  .posts-list-item {
+    padding: 1.5rem;
+  }
+  
+  .posts-list-item-title {
+    font-size: 1.5rem;
+  }
+  
+  .posts-list-item-meta {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+

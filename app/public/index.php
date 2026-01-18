@@ -1,72 +1,72 @@
 <?php
 
-/**
- * This is the central route handler of the application.
- * It uses FastRoute to map URLs to controller methods.
- * 
- * See the documentation for FastRoute for more information: https://github.com/nikic/FastRoute
- */
+session_start();
 
 require __DIR__ . '/../vendor/autoload.php';
 
 use FastRoute\RouteCollector;
 use function FastRoute\simpleDispatcher;
 
-/**
- * Define the routes for the application.
- */
 $dispatcher = simpleDispatcher(function (RouteCollector $r) {
     $r->addRoute('GET', '/', ['NovaCMS\\Controllers\\HomeController', 'home']);
-    $r->addRoute('GET', '/hello/{name}', ['NovaCMS\\Controllers\\HelloController', 'greet']);
+    
+    $r->addRoute('GET', '/login', ['NovaCMS\\Controllers\\AuthController', 'showLogin']);
+    $r->addRoute('POST', '/login', ['NovaCMS\\Controllers\\AuthController', 'login']);
+    $r->addRoute('GET', '/register', ['NovaCMS\\Controllers\\AuthController', 'showRegister']);
+    $r->addRoute('POST', '/register', ['NovaCMS\\Controllers\\AuthController', 'register']);
+    $r->addRoute('GET', '/logout', ['NovaCMS\\Controllers\\AuthController', 'logout']);
+    
+    $r->addRoute('GET', '/posts', ['NovaCMS\\Controllers\\PostController', 'browse']);
+    $r->addRoute('GET', '/posts/{slug}', ['NovaCMS\\Controllers\\PostController', 'show']);
+    
+    $r->addRoute('GET', '/search', ['NovaCMS\\Controllers\\SearchController', 'index']);
+    
+    // API Endpoints (JSON)
+    $r->addRoute('GET', '/api/posts', ['NovaCMS\\Controllers\\ApiController', 'getPosts']);
+    $r->addRoute('GET', '/api/posts/{id:\d+}', ['NovaCMS\\Controllers\\ApiController', 'getPost']);
+    $r->addRoute('GET', '/api/posts/recent', ['NovaCMS\\Controllers\\ApiController', 'getRecentPosts']);
+    $r->addRoute('GET', '/api/posts/search', ['NovaCMS\\Controllers\\ApiController', 'searchPosts']);
+    $r->addRoute('GET', '/api/categories', ['NovaCMS\\Controllers\\ApiController', 'getCategories']);
+    
+    $r->addRoute('GET', '/admin/dashboard', ['NovaCMS\\Controllers\\AdminController', 'dashboard']);
+    
+    // Admin Post Management
+    $r->addRoute('GET', '/admin/posts', ['NovaCMS\\Controllers\\Admin\\AdminPostController', 'index']);
+    $r->addRoute('GET', '/admin/posts/create', ['NovaCMS\\Controllers\\Admin\\AdminPostController', 'create']);
+    $r->addRoute('POST', '/admin/posts/store', ['NovaCMS\\Controllers\\Admin\\AdminPostController', 'store']);
+    $r->addRoute('GET', '/admin/posts/{id:\d+}/edit', ['NovaCMS\\Controllers\\Admin\\AdminPostController', 'edit']);
+    $r->addRoute('POST', '/admin/posts/{id:\d+}/update', ['NovaCMS\\Controllers\\Admin\\AdminPostController', 'update']);
+    $r->addRoute('POST', '/admin/posts/{id:\d+}/delete', ['NovaCMS\\Controllers\\Admin\\AdminPostController', 'delete']);
+    
+    // Admin User Management
+    $r->addRoute('GET', '/admin/users', ['NovaCMS\\Controllers\\Admin\\AdminUserController', 'index']);
+    $r->addRoute('GET', '/admin/users/{id:\d+}/edit', ['NovaCMS\\Controllers\\Admin\\AdminUserController', 'edit']);
+    $r->addRoute('POST', '/admin/users/{id:\d+}/update-role', ['NovaCMS\\Controllers\\Admin\\AdminUserController', 'updateRole']);
+    $r->addRoute('POST', '/admin/users/{id:\d+}/update-status', ['NovaCMS\\Controllers\\Admin\\AdminUserController', 'updateStatus']);
+    $r->addRoute('POST', '/admin/users/{id:\d+}/reset-password', ['NovaCMS\\Controllers\\Admin\\AdminUserController', 'resetPassword']);
+    $r->addRoute('POST', '/admin/users/{id:\d+}/delete', ['NovaCMS\\Controllers\\Admin\\AdminUserController', 'delete']);
 });
 
-
-/**
- * Get the request method and URI from the server variables and invoke the dispatcher.
- */
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 $uri = strtok($_SERVER['REQUEST_URI'], '?');
 $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
 
-/**
- * Switch on the dispatcher result and call the appropriate controller method if found.
- */
 switch ($routeInfo[0]) {
-    // Handle not found routes
     case FastRoute\Dispatcher::NOT_FOUND:
         http_response_code(404);
-        echo 'Not Found';
+        require __DIR__ . '/../src/Views/errors/404.php';
         break;
-    // Handle routes that were invoked with the wrong HTTP method
+        
     case FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
         http_response_code(405);
         echo 'Method Not Allowed';
         break;
-    // Handle found routes
+        
     case FastRoute\Dispatcher::FOUND:
-        /**
-         * $routeInfo contains the data about the matched route.
-         * 
-         * $routeInfo[1] is the whatever we define as the third argument the `$r->addRoute` method.
-         *  For instance for: `$r->addRoute('GET', '/hello/{name}', ['App\Controllers\HelloController', 'greet']);`
-         *  $routeInfo[1] will be `['App\Controllers\HelloController', 'greet']`
-         * 
-         * Hint: we can use class strings like `App\Controllers\HelloController` to create new instances of that class.
-         * Hint: in PHP we can use a string to call a class method dynamically, like this: `$instance->$methodName($args);`
-         */
-
-        // TODO: invoke the controller and method using the data in $routeInfo[1]
-
-        /**
-         * $route[2] contains any dynamic parameters parsed from the URL.
-         * For instance, if we add a route like:
-         *  $r->addRoute('GET', '/hello/{name}', ['App\Controllers\HelloController', 'greet']);
-         * and the URL is `/hello/dan-the-man`, then `$routeInfo[2][name]` will be `dan-the-man`.
-         */
-
-        // TODO: pass the dynamic route data to the controller method
-        // When done, visiting `http://localhost/hello/dan-the-man` should output "Hi, dan-the-man!"
-        throw new Exception('Not implemented yet');
-
+        [$className, $method] = $routeInfo[1];
+        $params = $routeInfo[2];
+        
+        $controller = new $className();
+        $controller->$method(...array_values($params));
         break;
 }

@@ -1,0 +1,259 @@
+/* Create/Edit Post Page Styles */
+
+.create-post-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 0 4rem;
+}
+
+.create-post-header {
+    margin-bottom: 2.5rem;
+}
+
+.create-post-back-link {
+    display: inline-flex;
+    align-items: center;
+    color: #1f2937;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    transition: all 0.2s;
+    gap: 0.5rem;
+}
+
+.create-post-back-link:hover {
+    color: #111827;
+    transform: translateX(-2px);
+}
+
+.create-post-back-link svg {
+    flex-shrink: 0;
+}
+
+.create-post-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+}
+
+.create-post-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border: 1px solid #e5e7eb;
+    padding: 2.5rem;
+}
+
+.post-form-section {
+    margin-bottom: 2.5rem;
+}
+
+.post-form-section:last-of-type {
+    margin-bottom: 0;
+}
+
+.post-section-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #e5e7eb;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.post-section-title svg {
+    flex-shrink: 0;
+    color: #6b7280;
+}
+
+.post-form-group {
+    margin-bottom: 1.5rem;
+}
+
+.post-form-label {
+    display: block;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.post-form-label .required {
+    color: #dc2626;
+    margin-left: 0.25rem;
+}
+
+.post-form-input,
+.post-form-textarea,
+.post-form-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.2s;
+    font-family: inherit;
+    background: white;
+}
+
+.post-form-input:focus,
+.post-form-textarea:focus,
+.post-form-select:focus {
+    outline: none;
+    border-color: #1f2937;
+    box-shadow: 0 0 0 3px rgba(31,41,55,0.1);
+}
+
+.post-form-input.post-title-input {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.post-form-textarea.post-content-textarea {
+    font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    resize: vertical;
+    min-height: 450px;
+}
+
+.post-form-help {
+    display: flex;
+    align-items: start;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin-top: 0.5rem;
+    background: #f9fafb;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+}
+
+.post-form-help svg {
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+}
+
+.post-file-upload-wrapper {
+    position: relative;
+}
+
+.post-file-upload-input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px dashed #d1d5db;
+    border-radius: 8px;
+    background: #f9fafb;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+}
+
+.post-file-upload-input:hover {
+    border-color: #1f2937;
+    background: #f3f4f6;
+}
+
+.post-image-preview {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.post-image-preview img {
+    max-width: 100%;
+    max-height: 300px;
+    border-radius: 8px;
+    border: 2px solid #e5e7eb;
+}
+
+.post-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.post-form-actions {
+    display: flex;
+    gap: 1rem;
+    padding-top: 2rem;
+    border-top: 2px solid #e5e7eb;
+    margin-top: 2rem;
+}
+
+.post-btn-primary {
+    padding: 0.875rem 2rem;
+    background: #1f2937;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.post-btn-primary:hover {
+    background: #111827;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(31,41,55,0.2);
+}
+
+.post-btn-primary svg {
+    flex-shrink: 0;
+}
+
+.post-btn-secondary {
+    padding: 0.875rem 2rem;
+    background: #f3f4f6;
+    color: #374151;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.post-btn-secondary:hover {
+    background: #e5e7eb;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .create-post-container {
+        padding: 1.5rem 0;
+    }
+    
+    .create-post-title {
+        font-size: 1.75rem;
+    }
+    
+    .create-post-card {
+        padding: 1.5rem;
+    }
+    
+    .post-form-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .post-form-actions {
+        flex-direction: column;
+    }
+    
+    .post-btn-primary,
+    .post-btn-secondary {
+        justify-content: center;
+        width: 100%;
+    }
+}
+

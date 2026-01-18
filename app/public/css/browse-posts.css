@@ -1,0 +1,118 @@
+/* Browse Posts Page Styles */
+
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+.browse-main {
+    padding: 2rem 0;
+}
+
+.browse-subtitle {
+    color: var(--color-muted);
+    margin-bottom: 2rem;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: var(--color-muted);
+}
+
+.error-message {
+    background: var(--color-error-bg);
+    color: var(--color-error);
+    padding: 1rem;
+    border-radius: var(--radius-md);
+    margin: 1rem 0;
+}
+
+.posts-grid {
+    display: grid;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.post-card {
+    background: white;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    padding: 1.5rem;
+    transition: var(--transition-all);
+}
+
+.post-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.post-card h3 {
+    margin: 0 0 0.5rem;
+}
+
+.post-card .meta {
+    color: var(--color-muted);
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.post-card .excerpt {
+    color: var(--color-text-light);
+    line-height: 1.6;
+}
+
+.pagination {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagination button {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--color-border);
+    background: white;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+}
+
+.pagination button:hover:not(:disabled) {
+    background: var(--color-primary);
+    color: white;
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination .current-page {
+    font-weight: 600;
+}
+
+.filters {
+    background: white;
+    padding: 1.5rem;
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.filters select {
+    padding: 0.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+}

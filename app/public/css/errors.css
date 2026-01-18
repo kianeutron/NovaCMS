@@ -1,0 +1,27 @@
+/* Error Pages Styles */
+
+.error-container {
+    text-align: center;
+    margin: 4rem 0;
+}
+
+.error-code {
+    font-size: 4rem;
+    color: #e74c3c;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.error-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.error-message {
+    margin: 1rem 0;
+    color: #666;
+}
+
+.error-action {
+    margin-top: 1rem;
+}

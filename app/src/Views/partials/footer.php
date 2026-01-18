@@ -1,6 +1,5 @@
-<?php
-// Partial placeholder: footer
-?>
-<footer>
-    <small>&copy; <?php echo date('Y'); ?> NovaCMS</small>
+<footer class="site-footer">
+    <div class="container">
+        <p class="muted">&copy; <?= date('Y') ?> NovaCMS. All rights reserved.</p>
+    </div>
 </footer>
