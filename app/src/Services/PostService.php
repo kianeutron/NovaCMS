@@ -25,14 +25,14 @@ class PostService
     {
         $offset = ($page - 1) * $perPage;
         $posts = $this->postRepository->findForAdmin($perPage, $offset, $status);
-        return array_map(fn($data) => Post::fromArray($data), $posts);
+        return $posts; // Return raw arrays for consistency
     }
 
     public function getPostsForAuthor(int $authorId, int $page = 1, int $perPage = 20, ?string $status = null): array
     {
         $offset = ($page - 1) * $perPage;
         $posts = $this->postRepository->findByAuthor($authorId, $perPage, $offset, $status);
-        return array_map(fn($data) => Post::fromArray($data), $posts);
+        return $posts; // Return raw arrays for consistency
     }
 
     public function getPostBySlug(string $slug): ?Post

@@ -80,30 +80,30 @@ $layout = function() use ($posts, $currentStatus) {
                     <?php foreach ($posts as $post): ?>
                         <tr>
                             <td data-label="Title" class="manage-posts-title-cell">
-                                <?= htmlspecialchars($post->title) ?>
+                                <?= htmlspecialchars($post['title']) ?>
                             </td>
                         <td data-label="Author" class="manage-posts-author-cell">
-                            <?= $post->authorName ? htmlspecialchars($post->authorName) : '—' ?>
+                            <?= !empty($post['author_name']) ? htmlspecialchars($post['author_name']) : '—' ?>
                         </td>
                         <td data-label="Category" class="manage-posts-category-cell">
-                            <?= $post->categoryName ? htmlspecialchars($post->categoryName) : '—' ?>
+                            <?= !empty($post['category_name']) ? htmlspecialchars($post['category_name']) : '—' ?>
                         </td>
                             <td data-label="Status">
-                                <span class="manage-posts-status-badge status-<?= htmlspecialchars($post->status) ?>">
-                                    <?= ucfirst($post->status) ?>
+                                <span class="manage-posts-status-badge status-<?= htmlspecialchars($post['status']) ?>">
+                                    <?= ucfirst($post['status']) ?>
                                 </span>
                             </td>
                             <td data-label="Date" class="manage-posts-date-cell">
-                                <?= date('M d, Y', strtotime($post->createdAt)) ?>
+                                <?= date('M d, Y', strtotime($post['created_at'])) ?>
                             </td>
                             <td class="manage-posts-actions">
-                                <a href="/admin/posts/<?= $post->id ?>/edit" class="manage-posts-action-link">
+                                <a href="/admin/posts/<?= $post['id'] ?>/edit" class="manage-posts-action-link">
                                     Edit
                                 </a>
-                                <a href="/posts/<?= htmlspecialchars($post->slug) ?>" target="_blank" class="manage-posts-action-link view">
+                                <a href="/posts/<?= htmlspecialchars($post['slug']) ?>" target="_blank" class="manage-posts-action-link view">
                                     View
                                 </a>
-                                <form method="POST" action="/admin/posts/<?= $post->id ?>/delete" class="manage-posts-delete-form">
+                                <form method="POST" action="/admin/posts/<?= $post['id'] ?>/delete" class="manage-posts-delete-form">
                                     <?php echo NovaCMS\Core\CSRF::field(); ?>
                                     <button type="submit" onclick="return confirm('Are you sure you want to delete this post?')" class="manage-posts-delete-btn">
                                         Delete
